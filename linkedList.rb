@@ -69,22 +69,34 @@ class LinkedList
         end
     end
     
-    def contains?(input)
+    def contains?(value)
         x = 0
         y = @head
         while @total_nodes > x do
-            return true if y.value == input
+            return true if y.value == value
             y = y.next_node
             x += 1
         end
         return false
     end
 
-    #-----TODO-----
     def find(value)
+        x = 0
+        y = @head
+        idx_values = []
+        while @total_nodes > x do
+            idx_values << x if y.value == value
+            y = y.next_node
+            x += 1
+        end
+        if idx_values.empty?; nil else idx_values end
+    end
+    
+    #-------TODO-------
+    def to_s
         
     end
-    #-----TODO-----
+    #-------TODO-------
     
     def test
         puts @head.inspect
@@ -119,4 +131,6 @@ my_list.pop
 my_list.pop
 my_list.tail
 my_list.head
-puts my_list.contains?(9)
+my_list.contains?(9)
+puts my_list.find(5)
+
