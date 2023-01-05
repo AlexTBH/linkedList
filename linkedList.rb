@@ -1,6 +1,6 @@
 class LinkedList
-
     attr_accessor :tail, :head, :total_nodes
+    
     def initialize
         @head = nil
         @tail = nil
@@ -55,6 +55,7 @@ class LinkedList
     end
 
     def pop
+        @total_nodes -= 1
         x = 1
         y = @head
         while @total_nodes > x do
@@ -68,12 +69,23 @@ class LinkedList
         end
     end
     
-    #-----TODO-------
-    def contains?(value)
-
+    def contains?(input)
+        x = 0
+        y = @head
+        while @total_nodes > x do
+            return true if y.value == input
+            y = y.next_node
+            x += 1
+        end
+        return false
     end
-    #-----TODO-------
 
+    #-----TODO-----
+    def find(value)
+        
+    end
+    #-----TODO-----
+    
     def test
         puts @head.inspect
         puts @tail.inspect
@@ -95,16 +107,16 @@ end
 my_list = LinkedList.new
 my_list.prepend(3)
 my_list.append(4)
-my_list.test
 my_list.append(4)
-my_list.append(5)
 my_list.append(9)
+my_list.append(5)
+my_list.append(5)
+my_list.append(5)
 my_list.append(7)
 my_list.size
+my_list.at(2)
+my_list.pop
+my_list.pop
+my_list.tail
 my_list.head
-my_list.tail
-puts my_list.at(2)
-my_list.pop
-my_list.pop
-my_list.tail
-
+puts my_list.contains?(9)
