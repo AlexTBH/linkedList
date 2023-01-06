@@ -92,7 +92,7 @@ class LinkedList
         if idx_values.empty?; nil else idx_values end
     end
     
-    #-------TODO-------
+    
     def to_s
         text = ""
         x = 0
@@ -105,8 +105,33 @@ class LinkedList
         end
         return text
     end
-    #-------TODO-------
-    
+
+    #-----TODO-----
+    def insert_at(value, index)
+        if index > @total_nodes; return "index too big for this list" end
+        x = 0
+        y = @head
+        @total_nodes += 1
+        while @total_nodes > x do
+            if index == 0 && @head == nil
+                @head = Node.new(value)
+                return
+            elsif index == 0
+                @head = Node.new(value, @head)
+                return
+            elsif x + 1 == index
+                y.next_node = Node.new(value, y.next_node)
+                x += 1
+                y = y.next_node
+                return
+            else
+                y = y.next_node
+                x += 1         
+            end
+        end
+    end
+    #-----TODO-----
+
     def test
         puts @head.inspect
         puts @tail.inspect
@@ -131,7 +156,7 @@ my_list.append(4)
 my_list.append(4)
 my_list.append(9)
 my_list.append(4)
-my_list.append(5)
+my_list.append(3)
 my_list.append(6)
 my_list.append(7)
 my_list.size
@@ -146,7 +171,8 @@ my_list.append(5)
 my_list.append(6)
 my_list.append(7)
 my_list.pop
-my_list.pop
 my_list.tail
+puts my_list.insert_at(2, 9)
+puts my_list.insert_at(3, 5)
 puts my_list.to_s
 
