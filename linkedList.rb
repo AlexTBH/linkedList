@@ -40,7 +40,7 @@ class LinkedList
     end
 
     def tail
-        puts "The current Tail node is #{@tail.value.inspect}"
+        puts "The current Tail node is #{@tail.value.inspect} #{@tail.next_node.inspect}"
     end
 
     def at(input)
@@ -55,8 +55,7 @@ class LinkedList
     end
 
     def pop
-        @total_nodes -= 1
-        x = 1
+        x = 0
         y = @head
         while @total_nodes > x do
             if y.next_node == @tail
@@ -67,6 +66,7 @@ class LinkedList
             end
             x += 1
         end
+        @total_nodes -= 1
     end
     
     def contains?(value)
@@ -94,7 +94,16 @@ class LinkedList
     
     #-------TODO-------
     def to_s
-        
+        text = ""
+        x = 0
+        y = @head
+        while @total_nodes > x do
+            text += y.value.to_s
+            if y.next_node.nil?; text += " -> nil " else text += " -> " end
+            y = y.next_node
+            x += 1
+        end
+        return text
     end
     #-------TODO-------
     
@@ -121,9 +130,9 @@ my_list.prepend(3)
 my_list.append(4)
 my_list.append(4)
 my_list.append(9)
+my_list.append(4)
 my_list.append(5)
-my_list.append(5)
-my_list.append(5)
+my_list.append(6)
 my_list.append(7)
 my_list.size
 my_list.at(2)
@@ -132,5 +141,12 @@ my_list.pop
 my_list.tail
 my_list.head
 my_list.contains?(9)
-puts my_list.find(5)
+puts my_list.find(3)
+my_list.append(5)
+my_list.append(6)
+my_list.append(7)
+my_list.pop
+my_list.pop
+my_list.tail
+puts my_list.to_s
 
