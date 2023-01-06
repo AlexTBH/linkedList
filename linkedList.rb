@@ -70,7 +70,7 @@ class LinkedList
     
     #-----TODO-------
     def contains?(value)
-
+        
     end
     #-----TODO-------
 
