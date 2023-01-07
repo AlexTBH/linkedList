@@ -106,23 +106,27 @@ class LinkedList
         return text
     end
 
-    #-----TODO-----
     def insert_at(value, index)
-        if index > @total_nodes; return "index too big for this list" end
+        if index > @total_nodes
+            puts "index too big for this list"
+            return
+        end
+
+        @total_nodes += 1
         x = 0
         y = @head
-        @total_nodes += 1
         while @total_nodes > x do
             if index == 0 && @head == nil
-                @head = Node.new(value)
-                return
+                return @head = Node.new(value)
             elsif index == 0
-                @head = Node.new(value, @head)
-                return
+                return @head = Node.new(value, @head)
             elsif x + 1 == index
                 y.next_node = Node.new(value, y.next_node)
-                x += 1
-                y = y.next_node
+                    if (index + 1) == @total_nodes
+                        x = Node.new(value, nil)
+                        @tail.next_node = x
+                        @tail = x
+                    end
                 return
             else
                 y = y.next_node
@@ -130,7 +134,24 @@ class LinkedList
             end
         end
     end
-    #-----TODO-----
+
+    #-----TODO------
+    def remove_at(index)
+        
+    end
+    #-----TODO------
+
+    def remove_at(index)
+        if index > @total_nodes
+            puts "no nodes at choosen index"
+            return
+        end
+
+        x = 0
+        y = @head
+        while @total_nodes > x do
+        end
+    end
 
     def test
         puts @head.inspect
@@ -161,8 +182,6 @@ my_list.append(6)
 my_list.append(7)
 my_list.size
 my_list.at(2)
-my_list.pop
-my_list.pop
 my_list.tail
 my_list.head
 my_list.contains?(9)
@@ -172,7 +191,10 @@ my_list.append(6)
 my_list.append(7)
 my_list.pop
 my_list.tail
-puts my_list.insert_at(2, 9)
-puts my_list.insert_at(3, 5)
+my_list.insert_at(2, 9)
+my_list.insert_at(3, 11)
+my_list.size
 puts my_list.to_s
-
+my_list.tail
+my_list.append(2)
+puts my_list.to_s
