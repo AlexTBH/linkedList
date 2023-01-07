@@ -40,7 +40,7 @@ class LinkedList
     end
 
     def tail
-        puts "The current Tail node is #{@tail.value.inspect} #{@tail.next_node.inspect}"
+        puts "The current Tail node is #{@tail.value.inspect}"
     end
 
     def at(input)
@@ -135,12 +135,6 @@ class LinkedList
         end
     end
 
-    #-----TODO------
-    def remove_at(index)
-        
-    end
-    #-----TODO------
-
     def remove_at(index)
         if index > @total_nodes
             puts "no nodes at choosen index"
@@ -149,7 +143,25 @@ class LinkedList
 
         x = 0
         y = @head
+        @total_nodes -= 1
         while @total_nodes > x do
+            if index == 0
+                @head = y.next_node
+                y.next_node = nil
+                return
+            end 
+
+            if x + 1 == index
+            z = y.next_node
+            c = z.next_node
+            y.next_node = c
+                if index == @total_nodes - 1
+                    @tail = y
+                end
+            return
+            end
+        y = y.next_node
+        x += 1    
         end
     end
 
@@ -174,7 +186,7 @@ end
 my_list = LinkedList.new
 my_list.prepend(3)
 my_list.append(4)
-my_list.append(4)
+my_list.append(5)
 my_list.append(9)
 my_list.append(4)
 my_list.append(3)
@@ -198,3 +210,8 @@ puts my_list.to_s
 my_list.tail
 my_list.append(2)
 puts my_list.to_s
+my_list.insert_at(0, 0)
+my_list.remove_at(0)
+puts my_list.to_s
+my_list.tail
+my_list.head
