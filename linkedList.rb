@@ -211,6 +211,7 @@ my_list.tail
 my_list.append(2)
 puts my_list.to_s
 my_list.insert_at(0, 0)
+puts my_list.to_s
 my_list.remove_at(0)
 puts my_list.to_s
 my_list.tail
